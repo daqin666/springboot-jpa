@@ -1,0 +1,58 @@
+server:
+  port: 8080
+
+  servlet: 
+    context-path: /springboot-jpa
+
+#thymeleaf配置：
+spring:
+  thymeleaf: 
+    cache: false 
+    encoding: UTF-8
+    enabled: true
+    mode: HTML5
+    
+    prefix: classpath:/templates/
+    suffix: .html 
+    servlet:  
+      content-type: text/html
+
+#MySQL配置：
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/springboot_jpa?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    driver-class-name: com.mysql.jdbc.Driver 该版本不支持了，更新了
+    type: com.alibaba.druid.pool.DruidDataSource
+
+
+
+    filters: stat
+    maxActive: 2
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    useGlobalDataSourceStat: true
+
+#jpa配置：
+  jpa: 
+    hibernate: 
+      ddl-auto: update
+    show-sql: true
+#默认的存储引擎切换为 InnoDB
+    database-platform: org.hibernate.dialect.MySQL57InnoDBDialect
+
+#日志配置：
+logging: 
+  path: logback.xml 
+

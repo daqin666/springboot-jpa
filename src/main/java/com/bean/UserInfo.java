@@ -17,7 +17,7 @@ public class UserInfo implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
-	@Column(name="name")
+	@Column(name="name") //如果名字匹配就不需要写这个注解
     private String name;
 
 	@Column(name="age")
